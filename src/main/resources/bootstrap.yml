@@ -13,6 +13,8 @@ spring:
   profiles: dev
 eureka:
   instance:
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
   client:
@@ -30,6 +32,8 @@ spring:
   profiles: test
 eureka:
   instance:
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
   client:
