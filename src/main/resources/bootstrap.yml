@@ -2,11 +2,15 @@ server:
   port: 8000
 spring:
   profiles:
-    active: test
+    active: dev
   application:
     name: discovery-server
 
 
+#开发环境
+---
+spring:
+  profiles: dev
 eureka:
   instance:
     prefer-ip-address: true
@@ -15,7 +19,24 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://localhost:8000/eureka/
+      defaultZone: http://127.0.0.1:8000/eureka/
+
+  server:
+    enable-self-preservation: false
+
+#测试环境
+---
+spring:
+  profiles: test
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://47.93.19.130:8000/eureka/
 
   server:
     enable-self-preservation: false
