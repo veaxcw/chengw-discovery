@@ -17,6 +17,7 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <docker.image.prefix>spring-cloud</docker.image.prefix>
+        <env>test</env>
     </properties>
 
     <dependencies>
@@ -56,7 +57,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <imageName>${docker.image.prefix}/${project.artifactId}-${env}</imageName>
                     <!--dockerFile目录-->
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
